@@ -1,0 +1,33 @@
+dn: OU=Users,DC=company,DC=com
+changetype: add
+objectclass: organizationalUnit
+ou: Users
+
+dn: CN=John Doe,OU=Users,DC=company,DC=com
+changetype: add
+objectclass: customPerson
+cn: John Doe
+customAttribute1: customValue1
+customAttribute2: customValue2
+givenname: John
+sn: Doe
+displayname: John Doe
+mail: johndoe@company.com
+userpassword: johndoe
+
+dn: OU=Groups,DC=company,DC=com
+changetype: add
+objectclass: organizationalUnit
+ou: Groups
+
+dn: CN=Admins,OU=Groups,DC=company,DC=com
+changetype: add
+cn: Admins
+objectclass: groupOfUniqueNames
+uniqueMember: CN=admin,DC=company,DC=com
+
+dn: CN=Maintainers,OU=Groups,DC=company,DC=com
+changetype: add
+cn: Maintainers
+objectclass: groupOfUniqueNames
+uniqueMember: CN=John Doe,OU=Users,DC=company,DC=com

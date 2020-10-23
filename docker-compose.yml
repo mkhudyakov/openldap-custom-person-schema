@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  open-ldap:
+    command: [--copy-service]
+    image: 'osixia/openldap:1.4.0'
+    volumes:
+      - ./custom.schema:/container/service/slapd/assets/config/bootstrap/schema/custom.schema
+      - ./users.ldif:/users.ldif
+    ports:
+      - '389:389'
+      - '636:636'
+    environment:
+      - LDAP_ORGANISATION=Local AD
+      - LDAP_ADMIN_PASSWORD=admin
+      - LDAP_DOMAIN=company.com
